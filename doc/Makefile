@@ -6,8 +6,8 @@ PROJECT=maturitni-prace
 TEX=pdflatex
 
 all:
-#	$(TEX) $(PROJECT).tex
-#	makeindex -o $(PROJECT).znd $(PROJECT).zdx
+	$(TEX) $(PROJECT).tex
+	makeindex -o $(PROJECT).znd $(PROJECT).zdx
 	$(TEX) $(PROJECT).tex
 
 clean:

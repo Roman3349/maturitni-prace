@@ -1,0 +1,77 @@
+\begin{theindex}
+
+  \item AES
+    \subitem Advanced Encryption Standard, \textit{7}
+  \item ARM
+    \subitem Acorn RISC Machine, \textit{9}
+    \subitem Advanced RISC Machine, \textit{9}
+
+  \indexspace
+
+  \item DPA
+    \subitem Direct Peripheral Access, \textit{7}
+
+  \indexspace
+
+  \item EEPROM
+    \subitem Electrically Erasable Programmable Read-Only Memory, 
+		\textit{11}
+
+  \indexspace
+
+  \item GFSK
+    \subitem Gaussian frequency-shift keying, \textit{7}
+  \item GPIO
+    \subitem General-purpose input/output, \textit{9}
+
+  \indexspace
+
+  \item HDMI
+    \subitem High-Definition Multimedia Interface, \textit{9}
+  \item HWP
+    \subitem Hardware profile, \textit{12}
+
+  \indexspace
+
+  \item I2C
+    \subitem Inter-Integrated Circuit, \textit{9}
+  \item IDE
+    \subitem Integrated Development Environment, \textit{10}
+  \item IoT
+    \subitem Internet of things, \textit{6}
+
+  \indexspace
+
+  \item LDO
+    \subitem Low-dropout, \textit{7}
+  \item LED
+    \subitem Light-Emitting Diode, \textit{11}
+
+  \indexspace
+
+  \item PWM
+    \subitem Pulse Width Modulation, \textit{11}
+
+  \indexspace
+
+  \item RAM
+    \subitem Random-access memory, \textit{9}, \textit{11}
+  \item RISC
+    \subitem Reduced instruction set computing, \textit{7}
+
+  \indexspace
+
+  \item SD
+    \subitem Secure Digital, \textit{9}
+  \item SIM
+    \subitem Subscriber identity module, \textit{7}
+  \item SPI
+    \subitem Serial Peripheral Interface, \textit{9}
+
+  \indexspace
+
+  \item USART
+    \subitem Universal Synchronous / Asynchronous Receiver and Transmitter, 
+		\textit{9}
+
+\end{theindex}
