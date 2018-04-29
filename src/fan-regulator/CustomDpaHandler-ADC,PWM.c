@@ -29,8 +29,11 @@
 #define _OUT_C6 TRISC.6
 #define _PIN_C6 LATC.6
 
+#define PNUM_USER_ADC (PNUM_USER + 1)
+#define PNUM_USER_PWM PNUM_USER
 
 // Must be the 1st defined function in the source code in order to be placed at the correct FLASH location!
+
 bit CustomDpaHandler()
 {
 	// Handler presence mark
@@ -68,19 +71,19 @@ bit CustomDpaHandler()
 		if (IsDpaEnumPeripheralsRequest()) {
 			// We implement 2 user peripherals
 			_DpaMessage.EnumPeripheralsAnswer.UserPerNr = 2;
-			FlagUserPer(_DpaMessage.EnumPeripheralsAnswer.UserPer, PNUM_USER + 0);
-			FlagUserPer(_DpaMessage.EnumPeripheralsAnswer.UserPer, PNUM_USER + 1);
+			FlagUserPer(_DpaMessage.EnumPeripheralsAnswer.UserPer, PNUM_USER_PWM);
+			FlagUserPer(_DpaMessage.EnumPeripheralsAnswer.UserPer, PNUM_USER_ADC);
 			_DpaMessage.EnumPeripheralsAnswer.HWPID = 0x000F;
 			_DpaMessage.EnumPeripheralsAnswer.HWPIDver = 0x0001;
 			goto DpaHandleReturnTRUE;
 		} else if (IsDpaPeripheralInfoRequest()) {
 			// Get information about peripheral
-			if (_PNUM == PNUM_USER + 0) {
+			switch (_PNUM) {
+			case PNUM_USER_PWM:
 				_DpaMessage.PeripheralInfoAnswer.PerT = PERIPHERAL_TYPE_PWM;
 				_DpaMessage.PeripheralInfoAnswer.PerTE = PERIPHERAL_TYPE_EXTENDED_WRITE;
 				goto DpaHandleReturnTRUE;
-			}
-			if (_PNUM == PNUM_USER + 1) {
+			case PNUM_USER_ADC:
 				_DpaMessage.PeripheralInfoAnswer.PerT = PERIPHERAL_TYPE_ADC;
 				_DpaMessage.PeripheralInfoAnswer.PerTE = PERIPHERAL_TYPE_EXTENDED_READ;
 				goto DpaHandleReturnTRUE;
@@ -88,7 +91,8 @@ bit CustomDpaHandler()
 			break;
 		} else {
 			// Handle peripheral command
-			if (_PNUM == PNUM_USER + 0) {
+			switch (_PNUM) {
+			case PNUM_USER_PWM:
 				// Check command
 				if (_PCMD != 0) {
 					DpaApiReturnPeripheralError(ERROR_PCMD);
@@ -148,9 +152,7 @@ bit CustomDpaHandler()
 WriteNoError:
 				_DpaDataLength = 0;
 				goto DpaHandleReturnTRUE;
-			}
-			// Handle peripheral command
-			if (_PNUM == PNUM_USER + 1) {
+			case PNUM_USER_ADC:
 				// Check command
 				if (_PCMD != 0) {
 					DpaApiReturnPeripheralError(ERROR_PCMD);
@@ -159,12 +161,10 @@ WriteNoError:
 				if (_DpaDataLength != 0) {
 					DpaApiReturnPeripheralError(ERROR_DATA_LEN);
 				}
-				if (_PNUM == PNUM_USER + 0) {
-					// ADC init (for more info see PIC datasheet) pin C5 (AN4) as analog input 
-					ANSELA.5 = 1;
-					// ADC setting (AN4 channel)
-					ADCON0 = 0b0.00100.01;
-				}
+				// ADC init (for more info see PIC datasheet) pin C5 (AN4) as analog input
+				ANSELA.5 = 1;
+				// ADC setting (AN4 channel)
+				ADCON0 = 0b0.00100.01;
 				// ADC result - right justified, Fosc/8
 				ADCON1 = 0b10010000;
 				// start ADC
