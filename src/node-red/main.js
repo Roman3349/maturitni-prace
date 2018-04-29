@@ -33,6 +33,13 @@
         "info": ""
     },
     {
+        "id": "8a845cf4.ea641",
+        "type": "tab",
+        "label": "IQRF_Fan",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "ae8a1f56.99e2c",
         "type": "mqtt-broker",
         "z": "",
@@ -228,6 +235,17 @@
         "order": 2
     },
     {
+        "id": "ba7f6b6e.66f4a8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Fan speed",
+        "tab": "b914875d.7e25a8",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
         "id": "d9a8a6be.9d04b8",
         "type": "mqtt out",
         "z": "dd8a1142.d816c",
@@ -398,10 +416,10 @@
         "type": "function",
         "z": "dd8a1142.d816c",
         "name": "Req sensor std",
-        "func": "var data = {\n    type: \"raw\",\n    request: {\n        nadr: \"0x0001\",\n        pnum: \"0x5E\",\n        pcmd: \"0x01\",\n        hwpid: \"0xFFFF\",\n        pdata: \"0xFFFFFFFF\",\n    },\n    timeout: 1000\n}\nmsg.payload = data;\nreturn msg;",
+        "func": "var data={\n    type: \"raw\",\n    request: {\n        nadr: \"0x0001\",\n        pnum: \"0x5E\",\n        pcmd: \"0x01\",\n        hwpid: \"0xFFFF\",\n        pdata: \"0xFFFFFFFF\",\n    },\n    timeout: 1000\n}\nmsg.payload=data;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 440,
+        "x": 420,
         "y": 180,
         "wires": [
             [
@@ -421,7 +439,7 @@
         "crontab": "",
         "once": true,
         "onceDelay": "",
-        "x": 260,
+        "x": 220,
         "y": 180,
         "wires": [
             [
@@ -451,7 +469,7 @@
         "type": "debug",
         "z": "dd8a1142.d816c",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -508,7 +526,7 @@
         "type": "function",
         "z": "7fb68445.dc619c",
         "name": "Get Temp",
-        "func": "var res=msg.payload.response.pdata.split(\".\");\n\nparstemp1 = parseInt(res[5],16);   //ff\nparstemp2 = parseInt(res[4],16);   //d0\n\ntemp1 = parstemp1;\ntemp2 = parstemp2;\n\ntemp1 &= 0x7F;\ntemp2 &= 0xF0;\n\ntemp = (temp1<<4) + (temp2>>4);\n\ntemp2 = parstemp2;\ntemp2 &= 0x0F;\n\ntemp2 *= 0.0625;\n\ntemp += temp2; \n\nif(((parstemp1 & 0x80)>>7) === 1) {\n    temp = 2048 - temp;\n    temp = -temp;\n}\nmsg.payload={\"KitTemp\":temp};\nreturn msg;",
+        "func": "var res=msg.payload.response.pdata.split(\".\");\n\nparstemp1 =  parseInt(res[5],16);   //ff\nparstemp2 =  parseInt(res[4],16);   //d0\n\ntemp1 = parstemp1;\ntemp2 = parstemp2;\n\ntemp1 &= 0x7F;\ntemp2 &= 0xF0;\n\ntemp = (temp1<<4) + (temp2>>4);\n\ntemp2 =  parstemp2;\ntemp2 &= 0x0F;\n\ntemp2 *= 0.0625;\n\ntemp += temp2; \n\nif(((parstemp1 & 0x80)>>7) === 1) {\n    temp = 2048 - temp;\n    temp = -temp;\n}\nmsg.payload={\"KitTemp\":temp};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 520,
@@ -707,7 +725,7 @@
         "type": "function",
         "z": "7fb68445.dc619c",
         "name": "Get Temp",
-        "func": "var res=msg.payload.response.pdata.split(\".\");\n\nparstemp1 = parseInt(res[2],16);   //ff\nparstemp2 = parseInt(res[1],16);   //d0\n\ntemp1 = parstemp1;\ntemp2 = parstemp2;\nif(temp1 == 0xFF && temp2 == 0xFF) {\n    temp = \"NaN\";\n    msg.payload={\"KitNodeTemp\":temp};\n    return msg;\n}\n\ntemp1 &= 0x7F;\ntemp2 &= 0xF0;\n\ntemp = (temp1<<4) + (temp2>>4);\n\ntemp2 = parstemp2;\ntemp2 &= 0x0F;\n\ntemp2 *= 0.0625;\n\ntemp += temp2; \n\nif(((parstemp1 & 0x80)>>7) === 1) {\n    temp = 2048 - temp;\n    temp = -temp;\n}\nif(temp == -2048) {\n    temp = \"NaN\";\n}\nmsg.payload={\"KitNodeTemp\":temp};\nreturn msg;",
+        "func": "var res=msg.payload.response.pdata.split(\".\");\n\nparstemp1 = parseInt(res[2],16);   //ff\nparstemp2 = parseInt(res[1],16);   //d0\n\ntemp1 = parstemp1;\ntemp2 = parstemp2;\nif(temp1 == 0xFF && temp2 == 0xFF) {\n    temp = \"NaN\";\n    msg.payload={\"KitNodeTemp\":temp};\n    return msg;\n}\n\ntemp1 &= 0x7F;\ntemp2 &= 0xF0;\n\ntemp = (temp1<<4) + (temp2>>4);\n\ntemp2 =  parstemp2;\ntemp2 &= 0x0F;\n\ntemp2 *= 0.0625;\n\ntemp += temp2; \n\nif(((parstemp1 & 0x80)>>7) === 1) {\n    temp = 2048 - temp;\n    temp = -temp;\n}\nif(temp == -2048) {\n    temp = \"NaN\";\n}\nmsg.payload={\"KitNodeTemp\":temp};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 520,
@@ -930,7 +948,7 @@
         "type": "debug",
         "z": "7fb68445.dc619c",
         "name": "raw",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "payload",
         "x": 490,
@@ -970,7 +988,7 @@
         "type": "debug",
         "z": "7fb68445.dc619c",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 950,
@@ -1516,5 +1534,124 @@
                 "bd869e52.2fa3e"
             ]
         ]
+    },
+    {
+        "id": "a9120dd6.c9d34",
+        "type": "range",
+        "z": "8a845cf4.ea641",
+        "minin": "0",
+        "maxin": "100",
+        "minout": "0",
+        "maxout": "128",
+        "action": "scale",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [
+                "4d2011e9.f5da7"
+            ]
+        ]
+    },
+    {
+        "id": "4d2011e9.f5da7",
+        "type": "function",
+        "z": "8a845cf4.ea641",
+        "name": "Req PWM",
+        "func": "var data={\n    type: \"raw\",\n    request: {\n        nadr: \"0x0004\",\n        pnum: \"0x20\",\n        pcmd: \"0x00\",\n        hwpid: \"0xFFFF\",\n        pdata: \"0x027D\" + Math.round(msg.payload).toString(16),\n    },\n    timeout: 1000\n}\nmsg.payload=data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 820,
+        "y": 120,
+        "wires": [
+            [
+                "88e1c68b.5ab91"
+            ]
+        ]
+    },
+    {
+        "id": "a50d0e9c.c3a048",
+        "type": "link in",
+        "z": "dd8a1142.d816c",
+        "name": "ToSend",
+        "links": [
+            "88e1c68b.5ab91"
+        ],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "fc03850c.ab92e8"
+            ]
+        ]
+    },
+    {
+        "id": "88e1c68b.5ab91",
+        "type": "link out",
+        "z": "8a845cf4.ea641",
+        "name": "",
+        "links": [
+            "a50d0e9c.c3a048"
+        ],
+        "x": 915,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b7dc0d64.b4faa8",
+        "type": "ui_slider",
+        "z": "8a845cf4.ea641",
+        "name": "",
+        "label": "IQRF Fan speed",
+        "group": "58282760.fabe68",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 540,
+        "y": 120,
+        "wires": [
+            [
+                "a9120dd6.c9d34"
+            ]
+        ]
+    },
+    {
+        "id": "ba3b6dc3.7852f8",
+        "type": "function",
+        "z": "8a845cf4.ea641",
+        "name": "Temp to speed",
+        "func": "let wantedTemp = 28;\nlet currentTemp = msg.payload;\nlet overflow = false;\nif (currentTemp > (wantedTemp + 2) && !overflow) {\n    overflow = true;\n    msg.payload = 100;\n} else if (currentTemp < (wantedTemp - 2) && overflow) {\n    overflow = false;\n    msg.payload = 25;\n} else {\n    msg.payload = 50;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "b7dc0d64.b4faa8"
+            ]
+        ]
+    },
+    {
+        "id": "f4155ab1.fc556",
+        "type": "mqtt in",
+        "z": "8a845cf4.ea641",
+        "name": "Temperature BME280",
+        "topic": "/sensors/bme280/0/temperature",
+        "qos": "2",
+        "broker": "ae8a1f56.99e2c",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "ba3b6dc3.7852f8"
+            ]
+        ]
     }
-]
+];
