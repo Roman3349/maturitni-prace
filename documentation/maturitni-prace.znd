@@ -1,0 +1,115 @@
+\begin{theindex}
+
+  \item ADC
+    \subitem Analog-to-digital converter, \textit{18}
+    \subitem Analogově digitální převodník, \textit{18}
+  \item AES
+    \subitem Advanced Encryption Standard, \textit{8}
+  \item ARM
+    \subitem Acorn RISC Machine, \textit{14}
+    \subitem Advanced RISC Machine, \textit{14}
+  \item AVR
+    \subitem Alf and Vegard's RISC processor, \textit{11}
+
+  \indexspace
+
+  \item DC
+    \subitem Direct current, \textit{21}
+  \item DPA
+    \subitem Direct Peripheral Access, \textit{8}
+
+  \indexspace
+
+  \item EDA
+    \subitem Electronic design automation, \textit{27}
+  \item EEPROM
+    \subitem Electrically Erasable Programmable Read-Only Memory, 
+		\textit{17}
+
+  \indexspace
+
+  \item GFSK
+    \subitem Gaussian frequency-shift keying, \textit{8}
+  \item GPIO
+    \subitem General-purpose input/output, \textit{14}
+
+  \indexspace
+
+  \item HDMI
+    \subitem High-Definition Multimedia Interface, \textit{14}
+  \item HWP
+    \subitem Hardware profile, \textit{18}
+
+  \indexspace
+
+  \item I$^{2}$C
+    \subitem Inter-Integrated Circuit, \textit{11}
+  \item ICMP
+    \subitem Internet Control Message Protocol, \textit{12}
+  \item IDE
+    \subitem Integrated Development Environment, \textit{15}
+  \item IoT
+    \subitem Internet of things, \textit{6}
+  \item IPv4
+    \subitem Internet Protocol version 4, \textit{12}
+  \item IRQ
+    \subitem Interrupt ReQuest, \textit{11}
+  \item ISM
+    \subitem Industrial, Scientific and Medical, \textit{27}
+
+  \indexspace
+
+  \item JSON
+    \subitem JavaScript Object Notation, \textit{19}
+
+  \indexspace
+
+  \item LDO
+    \subitem Low-dropout, \textit{8}
+  \item LED
+    \subitem Light-Emitting Diode, \textit{17}
+
+  \indexspace
+
+  \item MQTT
+    \subitem Message Queuing Telemetry Transport, \textit{15}
+
+  \indexspace
+
+  \item PIC
+    \subitem Peripheral Interface Controller, \textit{8}
+  \item PWM
+    \subitem Pulse Width Modulation, \textit{17}
+
+  \indexspace
+
+  \item RAM
+    \subitem Random-access memory, \textit{14}, \textit{17}
+  \item RISC
+    \subitem Reduced instruction set computing, \textit{8}
+
+  \indexspace
+
+  \item SD
+    \subitem Secure Digital, \textit{14}
+  \item SIM
+    \subitem Subscriber identity module, \textit{8}
+  \item SPI
+    \subitem Serial Peripheral Interface, \textit{14}
+  \item SRAM
+    \subitem Static RAM, \textit{8}
+
+  \indexspace
+
+  \item TCP
+    \subitem Transmission Control Protocol, \textit{12}
+
+  \indexspace
+
+  \item UDP
+    \subitem User Datagram Protocol, \textit{12}
+  \item USART
+    \subitem Universal Synchronous / Asynchronous Receiver and Transmitter, 
+		\textit{14}
+
+\end{theindex}
