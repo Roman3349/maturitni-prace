@@ -264,7 +264,7 @@
         "z": "8ceac1f5.ddc84",
         "name": "Servisní mod",
         "topic": "",
-        "payload": "{\"ctype\": \"conf\", \"type\": \"mode\", \"cmd\": \"service\"}",
+        "payload": "{   \"ctype\": \"conf\",   \"type\": \"mode\",   \"cmd\": \"service\" }",
         "payloadType": "str",
         "repeat": "",
         "crontab": "",
@@ -283,7 +283,7 @@
         "z": "8ceac1f5.ddc84",
         "name": "Standartní mod",
         "topic": "",
-        "payload": "{\"ctype\": \"conf\", \"type\": \"mode\", \"cmd\": \"operational\"}",
+        "payload": "{   \"ctype\": \"conf\",   \"type\": \"mode\",   \"cmd\": \"operational\" }",
         "payloadType": "str",
         "repeat": "",
         "crontab": "",
@@ -398,7 +398,7 @@
         "z": "8ceac1f5.ddc84",
         "name": "forward",
         "topic": "",
-        "payload": "{\"ctype\": \"conf\", \"type\": \"mode\", \"cmd\": \"forwarding\"}",
+        "payload": "{   \"ctype\": \"conf\",   \"type\": \"mode\",   \"cmd\": \"forwarding\" }",
         "payloadType": "str",
         "repeat": "",
         "crontab": "",
@@ -1627,7 +1627,7 @@
         "type": "function",
         "z": "8a845cf4.ea641",
         "name": "Temp to speed",
-        "func": "let wantedTemp = 28;\nlet currentTemp = msg.payload;\nlet overflow = false;\nif (currentTemp > (wantedTemp + 2) && !overflow) {\n    overflow = true;\n    msg.payload = 100;\n} else if (currentTemp < (wantedTemp - 2) && overflow) {\n    overflow = false;\n    msg.payload = 25;\n} else {\n    msg.payload = 50;\n}\nreturn msg;",
+        "func": "let wantedTemp = 24;\nlet heating = false;\nlet currentTemp = msg.payload;\nlet errorTemp = wantedTemp - currentTemp;\nif (!heating) {\n    errorTemp *= -1;\n}\nlet proportionalGain = 16;\nlet proportionalPart = errorTemp * proportionalGain;\nlet output = proportionalPart;\n\nif (output > 100) {\n    output = 100;\n} else if (output < 40) {\n    output = 40;\n}\n\nmsg.payload = output;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 360,
@@ -1654,4 +1654,4 @@
             ]
         ]
     }
-];
+]
