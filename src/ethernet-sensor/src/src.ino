@@ -49,25 +49,25 @@ void setup() {
  * Main loop
  */
 void loop() {
-  delay(500);
+	delay(500);
 	if (!client.connected()) {
 		mqttReconnect();
 	}
 	client.loop();
-  mqttSendData();
+	mqttSendData();
 }
 
 /**
  * Send data from BME280 to MQTT broker
  */
 void mqttSendData() {
-  String temperature = String(bme.readTemperature());
-  String pressure = String(bme.readPressure() / 100.0F);
-  String humidity = String(bme.readHumidity());
-  char dataToSend[64];
-  temperature.toCharArray(dataToSend, 64);
+	String temperature = String(bme.readTemperature());
+	String pressure = String(bme.readPressure() / 100.0F);
+	String humidity = String(bme.readHumidity());
+	char dataToSend[64];
+	temperature.toCharArray(dataToSend, 64);
 	client.publish("/sensors/bme280/0/temperature", dataToSend);
-  pressure.toCharArray(dataToSend, 64);
+	pressure.toCharArray(dataToSend, 64);
 	client.publish("/sensors/bme280/0/pressure", dataToSend);
 	humidity.toCharArray(dataToSend, 64);
 	client.publish("/sensors/bme280/0/humidity", dataToSend);
