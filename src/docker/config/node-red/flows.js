@@ -1,0 +1,1 @@
+../../../node-red/main.json
