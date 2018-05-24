@@ -28,7 +28,7 @@
 
 ~ \vspace{64pt}
 
-\includegraphics[width = 160px]{img/gymbos-logo.png}  \\[8pt]
+\includegraphics[width = 160px]{../img/gymbos-logo.png}  \\[8pt]
 
 {\LARGE \textbf{Gymnázium Boskovice,} \\}
 
@@ -122,14 +122,14 @@ Pro svou funkčnost regulátor potřebuje 12~V napájecí spínaný zdroj, kter�
 \begin{figure}[H]
 \centering
 \label{fig:schematic/fan-regulator}
-\includegraphics[width = 128mm]{img/kicad/fan-regulator-schema.png}
+\includegraphics[width = 128mm]{../img/kicad/fan-regulator-schema.png}
 \caption{Obvodové schéma regulátoru}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:board/fan-regulator}
-\includegraphics{img/kicad/fan-regulator-board.pdf}
+\includegraphics{../img/kicad/fan-regulator-board.pdf}
 \caption{Výkres plošného spoje regulátoru}
 \end{figure}
 
@@ -140,7 +140,7 @@ Pro komunikaci mezi bránou a regulátory jsem použil bezdrátový modul IQRF T
 \begin{figure}[H]
 \centering
 \label{fig:iqrf/fotka}
-\includegraphics[width = 64mm]{img/iqrf/dctr-72dat.png}
+\includegraphics[width = 64mm]{../img/iqrf/dctr-72dat.png}
 \caption{Fotografie bezdrátového modulu IQRF TR-72DAT}
 \end{figure}
 
@@ -155,7 +155,7 @@ Microchip PIC16LF1938 je 8-bitový mikrokontrolér s~architekturou PIC\index[zkr
 \begin{figure}[H]
 \centering
 \label{fig:iqrf/zjednodusene-schema}
-\includegraphics[width = 128mm]{img/iqrf/dctr-72dat-zjednodusene-schema.png}
+\includegraphics[width = 128mm]{../img/iqrf/dctr-72dat-zjednodusene-schema.png}
 \caption{Zjednodušené schéma bezdrátového modulu IQRF TR-72DAT}
 \end{figure}
 
@@ -168,14 +168,14 @@ Pro svou funkčnost regulátor potřebuje 5~V napájecí spínaný zdroj, který
 \begin{figure}[H]
 \centering
 \label{fig:schematic/sensor}
-\includegraphics[width = 150mm]{img/kicad/sensor-schema.png}
+\includegraphics[width = 150mm]{../img/kicad/sensor-schema.png}
 \caption{Obvodové schéma senzoru teploty}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:board/sensor}
-\includegraphics{img/kicad/sensor-board.pdf}
+\includegraphics{../img/kicad/sensor-board.pdf}
 \caption{Výkres plošného spoje senzoru teploty}
 \end{figure}
 
@@ -188,14 +188,14 @@ Jako řídící mikrokontrolér jsem zvolil Atmel ATmega328P, který běží na 
 \begin{figure}[H]
 \centering
 \label{fig:atmega328p-block-diagram}
-\includegraphics[width = 128mm]{img/atmega328p-block-diagram.png}
+\includegraphics[width = 128mm]{../img/atmega328p-block-diagram.png}
 \caption{Blokové schéma mikrokontroléru ATmega328P}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:atmega328p-pinout}
-\includegraphics[width = 128mm]{img/atmega328p-pinout.png}
+\includegraphics[width = 128mm]{../img/atmega328p-pinout.png}
 \caption{Popis vývodů mikrokontroléru ATmega328P v~pouzdru DIP-28}
 \end{figure}
 
@@ -208,7 +208,7 @@ Pro komunikaci mezi bránou a senzorem je použit Ethernet. Protože samotný mi
 \begin{figure}[H]
 \centering
 \label{fig:w5100-block-diagram}
-\includegraphics[width = 96mm]{img/w5100-block-diagram.png}
+\includegraphics[width = 96mm]{../img/w5100-block-diagram.png}
 \caption{Blokové schéma ethernetového řadiče WIZnet W5100}
 \end{figure}
 
@@ -216,12 +216,12 @@ Pro komunikaci mezi bránou a senzorem je použit Ethernet. Protože samotný mi
 
 \subsubsection{Senzor Bosch BME280}
 
-Jako senzor teploty jsem zvolil Bosch BME280, který kromě teploty měří také relativní vlhkost a atmosferický tlak. Mikrokontrolér může se senzorem komunikovat po sběrnici I$^{2}$C nebo SPI. Zvolil jsem komunikaci po sběrnici I$^{2}$C, protože po sběrnici SPI již komunikuje ethernetový řadič. Senzor je napájen 3,3~V a je kompatibilní pouze s~3,3~V logickou úrovní, proto musí být použit převodník logických úrovních, který se skládá z~N-MOSFET tranzistoru BSS138 a dvou pull-up resistorů. Protože senzor je vyráběn pouze v LGA pouzdře, které je téměř nemožné v domácích podmínkách osadit, je použit hotový modul.
+Jako senzor teploty jsem zvolil Bosch BME280, který kromě teploty měří také relativní vlhkost a atmosferický tlak. Mikrokontrolér může se senzorem komunikovat po sběrnici I$^{2}$C nebo SPI. Zvolil jsem komunikaci po sběrnici I$^{2}$C, protože po sběrnici SPI již komunikuje ethernetový řadič. Senzor je napájen 3,3~V a je kompatibilní pouze s~3,3~V logickou úrovní, proto musí být použit převodník logických úrovních, který se skládá z~N-MOSFET tranzistoru BSS138 a dvou pull-up rezistorů. Protože senzor je vyráběn pouze v LGA pouzdře, které je téměř nemožné v domácích podmínkách osadit, je použit hotový modul.
 
 \begin{figure}[H]
 \centering
 \label{fig:bme280-block-diagram}
-\includegraphics[width = 128mm]{img/bme280-block-diagram.png}
+\includegraphics[width = 128mm]{../img/bme280-block-diagram.png}
 \caption{Blokové schéma senzoru Bosch BME280}
 \end{figure}
 
@@ -248,7 +248,7 @@ Raspberry Pi 3 model B je jednodeskový počítač, který má rozměry podobné
 \begin{figure}[H]
 \centering
 \label{fig:foto/rpi3}
-\includegraphics[width = 128mm]{img/foto/rpi3.jpg}
+\includegraphics[width = 128mm]{../img/foto/rpi3.jpg}
 \caption{Fotografie jednodeskového počítače Raspberry Pi 3 model B}
 \end{figure}
 
@@ -271,7 +271,7 @@ Vývojové prostředí PlatformIO IDE je založeno na open-source textovém edit
 \begin{figure}[H]
 \centering
 \label{fig:platformio-ide}
-\includegraphics[width = 150mm]{img/platformio-ide.png}
+\includegraphics[width = 150mm]{../img/platformio-ide.png}
 \caption{Vývojové prostředí PlatformIO IDE}
 \end{figure}
 
@@ -288,7 +288,7 @@ IQRF IDE\cite{iqrf/ide} je zdarma stažitelné vývojové prostředí, které je
 \begin{figure}[H]
 \centering
 \label{fig:iqrf/ide}
-\includegraphics[width = 150mm]{img/iqrf/ide.png}
+\includegraphics[width = 150mm]{../img/iqrf/ide.png}
 \caption{Vývojové prostředí IQRF IDE}
 \end{figure}
 
@@ -315,7 +315,7 @@ IQRF OS\cite{iqrf/os} je operační systém určený pro bezdrátové moduly IQR
 \begin{figure}[H]
 \centering
 \label{fig:foto/iqrf-os}
-\includegraphics[width = 100mm]{img/iqrf/os-blokove-schema.png}
+\includegraphics[width = 100mm]{../img/iqrf/os-blokove-schema.png}
 \caption{Blokové schéma operačního systému IQRF OS}
 \end{figure}
 
@@ -378,13 +378,13 @@ Pro uživatelsky přívětivou konfiguraci IQRF Gateway Daemonu jsem vytvořil w
 \begin{figure}[H]
 \centering
 \label{fig:iqrf/iqrf-daemon-webapp}
-\includegraphics[width = 150mm]{img/iqrf/iqrf-daemon-webapp.png}
+\includegraphics[width = 150mm]{../img/iqrf/iqrf-daemon-webapp.png}
 \caption{Výchozí stránka IQRF Gateway Daemon webapp}
 \end{figure}
 
-\subsubsection{MQTT boker mosquitto}
+\subsubsection{MQTT broker mosquitto}
 
-Jako MQTT broker jsem pouřil open-source software mosquitto\cite{sw/mosquitto}, který je vyvíjen společností Eclipse v programovacím jazyce C. Obsahuje klientskou i serverovou část. Implementuje standardy MQTT 3.1 a MQTT 3.1.1.
+Jako MQTT broker jsem použil open-source software mosquitto\cite{sw/mosquitto}, který je vyvíjen společností Eclipse v programovacím jazyce C. Obsahuje klientskou i serverovou část. Implementuje standardy MQTT 3.1 a MQTT 3.1.1.
 
 \newpage
 
@@ -397,14 +397,14 @@ Program vytvořený v Node-REDu se skládá z~bloků, které jsou rozděleny na 
 \begin{figure}[H]
 \centering
 \label{fig:node-red}
-\includegraphics[width = 150mm]{img/node-red.png}
-\caption{Webové vývojové prodtředí Node-REDu}
+\includegraphics[width = 150mm]{../img/node-red.png}
+\caption{Webové vývojové prostředí Node-REDu}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:node-red_dashboard}
-\includegraphics[width = 150mm]{img/node-red_dashboard.png}
+\includegraphics[width = 150mm]{../img/node-red_dashboard.png}
 \caption{Node-RED Dashboard s grafy}
 \end{figure}
 
@@ -496,21 +496,21 @@ Navržený systém měření a regulace teploty v~domácnosti byl navržen a rea
 \begin{figure}[H]
 \centering
 \label{fig:foto/brana}
-\includegraphics[width = 150mm]{img/foto/brana.jpg}
+\includegraphics[width = 150mm]{../img/foto/brana.jpg}
 \caption{Fotografie funkčního vzorku brány}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:foto/iqrf-pwm-fan-controller}
-\includegraphics[width = 150mm]{img/foto/iqrf-pwm-fan-controller.jpg}
-\caption{Fotografie funkčního vzorku PWM regulátor ventilátoru}
+\includegraphics[width = 150mm]{../img/foto/iqrf-pwm-fan-controller.jpg}
+\caption{Fotografie funkčního vzorku PWM regulátoru ventilátoru}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \label{fig:foto/arduino-ethernet-sensor}
-\includegraphics[width = 150mm]{img/foto/arduino-ethernet-sensor.jpg}
+\includegraphics[width = 150mm]{../img/foto/arduino-ethernet-sensor.jpg}
 \caption{Fotografie funkčního vzorku senzoru teploty}
 \end{figure}
 
